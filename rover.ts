@@ -103,27 +103,33 @@ enum RVupdateMode
   */
 enum RVcolors
 {
-    //% block=red
-    Red = 0xff0000,
-    //% block=orange
-    Orange = 0xffa500,
-    //% block=yellow
-    Yellow = 0xffff00,
-    //% block=green
-    Green = 0x00ff00,
-    //% block=blue
-    Blue = 0x0000ff,
-    //% block=indigo
-    Indigo = 0x4b0082,
-    //% block=violet
-    Violet = 0x8a2be2,
-    //% block=purple
-    Purple = 0xff00ff,
-    //% block=white
-    White = 0xffffff,
-    //% block=black
-    Black = 0x000000
+    Red=0,
+    OliveGreen=1,
+    BrightGreen=2,
+    LightGreen=3,
+    Green=4,
+    BurntOrange=5,
+    DarkBrown=6,
+    Brown=7,
+    Turquoise=8,
+    BlueGreen=9,
+    Orange=10,
+    Maroon=11,
+    Purple=12,
+    Violet=13,
+    LightBlue=14,
+    Yellow=15,
+    Indigo=16,
+    MediumBlue=17,
+    Blue=18,
+    White=19,
+    Pink=20,
+    PaleGreen=21,
+    PaleBlue=22,
+    Grey=23,
+    Black=24
 }
+    //% color.fieldOptions.colours='["#FF0000","#659900","#18E600","#80FF00","#00FF00","#FF8000","#D82600","#B24C00","#00FFC0","#00FF80","#FFC000","#FF0080","#FF00FF","#B09EFF","#00FFFF","#FFFF00","#8000FF","#0080FF","#0000FF","#FFFFFF","#FF8080","#80FF80","#40C0FF","#999999","#000000"]'
 
 /**
   * Keypad keys
