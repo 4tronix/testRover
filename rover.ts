@@ -3,10 +3,15 @@
   */
 enum RVservos
 {
+    //% block="front left"
     FrontLeft=9,
+    //% block="rear left"
     RearLeft=11,
+    //% block="rear right"
     RearRight=13,
+    //% block="front right"
     FrontRight=15,
+    //% block="mast"
     Mast=0
 }
 
