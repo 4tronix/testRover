@@ -707,7 +707,7 @@ namespace marsRover
 
     /**
       * Get numeric value of colour
-      * @param color Standard RGB Led Colours
+      * @param color Standard RGB Led Colours eg 16711680 
       */
     //% blockId="colourSelect"
     //% block=%color
@@ -719,7 +719,7 @@ namespace marsRover
     //% color.fieldEditor="colornumber"
     //% color.fieldOptions.decompileLiterals=true
     //% color.defl='0xff0000'
-    //% color.fieldOptions.colours='["#FF0000","#659900","#18E600","#80FF00","#00FF00","#FF8000","#D82600","#B24C00","#00FFC0","#00FF80","#FFC000","#FF0080","#FF00FF","#B09EFF","#00FFFF","#FFFF00","#8000FF","#0080FF","#0000FF","#FFFFFF","#FF8080","#80FF80","#40C0FF","#999999","#000000"]'
+    //% color.fieldOptions.colours='["16711680","#659900","#18E600","#80FF00","#00FF00","#FF8000","#D82600","#B24C00","#00FFC0","#00FF80","#FFC000","#FF0080","#FF00FF","#B09EFF","#00FFFF","#FFFF00","#8000FF","#0080FF","#0000FF","#FFFFFF","#FF8080","#80FF80","#40C0FF","#999999","#000000"]'
     //% color.fieldOptions.columns=5
     //% color.fieldOptions.className='rgbColorPicker'
     export function colourSelect(color: number): number

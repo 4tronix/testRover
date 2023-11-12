@@ -1,23 +1,24 @@
 # MARS Rover
 
 This library provides a Microsoft Makecode extension for the [4tronix M.A.R.S. Rover](https://shop.4tronix.co.uk/products/marsrover)
+
 Here are [the assembly instructions](https://4tronix.co.uk/rover)
 
 ## Driving the MARS Rover
-The simplest way to drive Rover is by using the `move_Milli(...)` and move(...)` blocks.
+The simplest way to drive Rover is by using the `moveMilli(...)` and move(...)` blocks.
 The speed is between 0 (stop) and 100 (full speed)
 Direction can be Forward or Reverse
 
 Drive forward at speed 60:
 
 ```block
-Rover.move(eVector.Forward, 60)
+Rover.move(RVvector.Forward, 60)
 ```
 
 Drive backwards at speed 70 for 2 seconds:
 
 ```block
-Rover.move_milli(eVector.Reverse, 70, 2000)
+Rover.moveMilli(RVvector.Reverse, 70, 2000)
 ```   
 
 You can also spin on the spot - either left or right
@@ -25,13 +26,13 @@ You can also spin on the spot - either left or right
 Spin left at speed 60:
 
 ```block
-Rover.spin(eDirection.Left, 60)
+Rover.spin(RVdirection.Left, 60)
 ```
 
 Spin right at speed 50:
 
 ```block
-Rover.spin(eDirection.Right, 50)
+Rover.spin(RVdirection.Right, 50)
 ```
 
 If you want more fine grain control of individal motors, use `Rover.motor(..)` to drive motor either forward or reverse. The value
@@ -40,13 +41,13 @@ indicates speed and is between 0 (stop) and 100 (reverse.
 Drive left motors forward at speed 60 (right motors are unchanged):
 
 ```block
-Rover.motor(eMotor.Left, eVector.Forward, 60)
+Rover.motor(RVmotor.Left, RVvector.Forward, 60)
 ```
 
 Drive both motors in reverse at speed 50:
 
 ```block
-Rover.motor(eMotor.Both, eVector.Reverse, 50)
+Rover.motor(RVmotor.Both, RVvector.Reverse, 50)
 ```
 
 ## Controlling the Servos
@@ -62,28 +63,28 @@ Rover.setServo(0, 30)
 You can also select the name of the servo using the getServoNumber(..) function. This command does the same as the one above:
 
 ```block
-Rover.getServoNumber(eServos.Mast)
+Rover.servoNumber(RVservos.Mast)
 ```
 
 To steer left, the front wheel servos need to point left and the rear servos to point right. You could do this  individually, but the Rover.steer(..) is designed for this:
 
-Turn the wheels to an angle of 30 degrees left. Motors are not affected.
+Turn the wheels to an angle of 30 degrees left. Motor speeds are not affected.
 ```block
-Rover.steer(eDirection.Left, 30)
+Rover.steer(RVdirection.Left, 30)
 ```
 
-Turn the wheels to an angle of 45 degrees right - Rather excessive turn!
+Turn the wheels to an angle of 45 degrees right - a rather excessive turn!
 
 ```block
-Rover.steer(eDirection.Right, 45)
+Rover.steer(RVdirection.Right, 45)
 ```
 
 To point straight ahead, you can either steer with an angle of zero, or simply centre the wheel servos using `Rover.zeroServos(...)`. You can select all servos, just the wheel servos, or just the mast servos:
 
 ```blocks
-Rover.zeroServos(eServoGroup.Wheel)
-Rover.zeroServos(eServoGroup.Mast)
-Rover.zeroServos(eServoGroup.All)
+Rover.zeroServos(RVservoGroup.Wheel)
+Rover.zeroServos(RVservoGroup.Mast)
+Rover.zeroServos(RVservoGroup.All)
 ```
 
 The MARS Rover has an EEROM that stores an offset for each servo to ensure that it points straight ahead when set to its zero position. You should run the CalibrateServos program to set these up for your robot after you first assemble it.
@@ -139,7 +140,7 @@ If you have mounted the optional sonar sensor for the Robobit you can
 also use the `Rover.sonar(..)` function to read the distance to obstacles.
 
 ```block
-Rover.readSonar(ePingUnit.Centimeters)
+Rover.readSonar(RVpingUnit.Centimeters)
 ```
 
 ## FireLed Functions
@@ -155,7 +156,7 @@ Rover.setLedColor(0x00FF00)
 Set all FireLeds to Green (built-in colour selection):
 
 ```block
-Rover.setLedColor(eColors.Green)
+Rover.setLedColor(RVcolors.Green)
 ```
 
 Clear all LEDs:
@@ -167,7 +168,7 @@ Rover.ledClear()
 Set LED at position 2 (0 to 3) to Green:
 
 ```block
-Rover.setPixelColor(2, Rover.eColours(eColors.Green))
+Rover.setPixelColor(2, Rover.RVcolours(RVcolors.Green))
 ```
 
 Set LEDs to a rainbow selection:
