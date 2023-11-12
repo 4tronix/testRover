@@ -3,15 +3,10 @@
   */
 enum RVservos
 {
-    //% block="front left"
-    FL=9,
-    //% block="rear left"
-    RL=11,
-    //% block="front right"
-    RR=13,
-    //% block="rear right"
-    FR=15,
-    //% block="mast"
+    FrontLeft=9,
+    RearLeft=11,
+    RearRight=13,
+    FrontRight=15,
     Mast=0
 }
 
@@ -131,37 +126,37 @@ enum RVcolors
 enum RVkeys
 {
     //% block="stop"
-    RVstop=0b0000000010000000,
+    Kstop=0b0000000010000000,
     //% block="forward"
-    RVforward=0b0000010000000000,
+    Kforward=0b0000010000000000,
     //% block="reverse"
-    RVreverse=0b0000000000010000,
+    Kreverse=0b0000000000010000,
     //% block="forward left"
-    RVforwardLeft=0b0000001000000000,
+    KforwardLeft=0b0000001000000000,
     //% block="forward right"
-    RVforwardRight=0b0000100000000000,
+    KforwardRight=0b0000100000000000,
     //% block="reverse left"
-    RVreverseLeft=0b0000000000001000,
+    KreverseLeft=0b0000000000001000,
     //% block="reverse right"
-    RVreverseRight=0b0000000000100000,
+    KreverseRight=0b0000000000100000,
     //% block="spin left"
-    RVspinLeft=0b0000000001000000,
+    KspinLeft=0b0000000001000000,
     //% block="spin right"
-    RVspinRight=0b0000000100000000,
+    KspinRight=0b0000000100000000,
     //% block="mast left"
-    RVmastLeft=0b1000000000000000,
+    KmastLeft=0b1000000000000000,
     //% block="mast right"
-    RVmastRight=0b0100000000000000,
+    KmastRight=0b0100000000000000,
     //% block="cross"
-    RVcross=0b0000000000000100,
+    Kcross=0b0000000000000100,
     //% block="tick"
-    RVtick=0b0000000000000010,
+    Ktick=0b0000000000000010,
     //% block="pause"
-    RVpause=0b0000000000000001,
+    Kpause=0b0000000000000001,
     //% block="save"
-    RVsave=0b0010000000000000,
+    Ksave=0b0010000000000000,
     //% block="load"
-    RVload=0b0001000000000000
+    Kload=0b0001000000000000
 }
 
 /**
@@ -249,10 +244,10 @@ namespace marsRover
         switch(group)
         {
             case RVservoGroup.Wheel:
-                setServo(servoNumber(RVservos.FL), 0);
-                setServo(servoNumber(RVservos.FR), 0);
-                setServo(servoNumber(RVservos.RL), 0);
-                setServo(servoNumber(RVservos.RR), 0);
+                setServo(servoNumber(RVservos.FrontLeft), 0);
+                setServo(servoNumber(RVservos.FrontRight), 0);
+                setServo(servoNumber(RVservos.RearLeft), 0);
+                setServo(servoNumber(RVservos.RearRight), 0);
                 break;
             case RVservoGroup.Mast:
                 setServo(servoNumber(RVservos.Mast), 0);
@@ -270,7 +265,7 @@ namespace marsRover
       * @param angle angle to steer
       */
     //% blockId="steer"
-    //% block="steer %direction| by angle %angle"
+    //% block="steer %direction|by angle%angle"
     //% weight=90
     //% subcategory=Servos
     export function steer(direction: RVdirection, angle: number): void
@@ -278,10 +273,10 @@ namespace marsRover
         angle = clamp(angle, 0, 90);
         if (direction==RVdirection.Left)
             angle = 0-angle;
-        setServo(servoNumber(RVservos.FL), angle);
-        setServo(servoNumber(RVservos.FR), angle);
-        setServo(servoNumber(RVservos.RL), 0-angle);
-        setServo(servoNumber(RVservos.RR), 0-angle);
+        setServo(servoNumber(RVservos.FrontLeft), angle);
+        setServo(servoNumber(RVservos.FrontRight), angle);
+        setServo(servoNumber(RVservos.RearLeft), 0-angle);
+        setServo(servoNumber(RVservos.RearRight), 0-angle);
     }
 
     /**
@@ -290,7 +285,7 @@ namespace marsRover
       * @param angle degrees to turn servo (-90 to +90)
       */
     //% blockId="setServo"
-    //% block="set servo %servo=RVservos| to angle %angle"
+    //% block="set servo %servo=RVservos|to angle%angle"
     //% weight=80
     //% subcategory=Servos
     export function setServo(servo: number, angle: number): void
@@ -480,10 +475,10 @@ namespace marsRover
     export function spin(direction: RVdirection, speed: number): void
     { 
         speed = clamp(speed, 0, 100);
-        setServo(servoNumber(RVservos.FL), 45);
-        setServo(servoNumber(RVservos.FR), -45);
-        setServo(servoNumber(RVservos.RL), -45);
-        setServo(servoNumber(RVservos.RR), 45);
+        setServo(servoNumber(RVservos.FrontLeft), 45);
+        setServo(servoNumber(RVservos.FrontRight), -45);
+        setServo(servoNumber(RVservos.RearLeft), -45);
+        setServo(servoNumber(RVservos.RearRight), 45);
         if (direction==RVdirection.Left)
         {
             motor(RVmotor.Left, RVvector.Reverse, speed);
@@ -724,7 +719,7 @@ namespace marsRover
     //% color.fieldEditor="colornumber"
     //% color.fieldOptions.decompileLiterals=true
     //% color.defl='0xff0000'
-    //% color.fieldOptions.colours='["0xFF0000","0x659900","0x18E600","0x80FF00","0x00FF00","0xFF8000","0xD82600","0xB24C00","0x00FFC0","0x00FF80","0xFFC000","0xFF0080","0xFF00FF","0xB09EFF","0x00FFFF","0xFFFF00","0x8000FF","0x0080FF","0x0000FF","0xFFFFFF","0xFF8080","0x80FF80","0x40C0FF","0x999999","0x000000"]'
+    //% color.fieldOptions.colours='["#FF0000","#659900","#18E600","#80FF00","#00FF00","#FF8000","#D82600","#B24C00","#00FFC0","#00FF80","#FFC000","#FF0080","#FF00FF","#B09EFF","#00FFFF","#FFFF00","#8000FF","#0080FF","#0000FF","#FFFFFF","#FF8080","#80FF80","#40C0FF","#999999","#000000"]'
     //% color.fieldOptions.columns=5
     //% color.fieldOptions.className='rgbColorPicker'
     export function colourSelect(color: number): number
