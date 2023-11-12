@@ -285,7 +285,7 @@ namespace marsRover
       * @param angle degrees to turn servo (-90 to +90)
       */
     //% blockId="setServo"
-    //% block="set servo %servo=RVservos|to angle%angle"
+    //% block="set servo %servo=servoNumber|to angle%angle"
     //% weight=80
     //% subcategory=Servos
     export function setServo(servo: number, angle: number): void
@@ -332,7 +332,7 @@ namespace marsRover
       * @param angle degrees to turn servo (-90 to +90)
       */
     //% blockId="setOffset"
-    //% block="set offset of servo %servo=RVservos| to %offset"
+    //% block="set offset of servo %servo=servoNumber| to %offset"
     //% weight=60
     //% subcategory=Servos
     export function setOffset(servo: number, offset: number): void
@@ -346,7 +346,7 @@ namespace marsRover
       * @param servo Servo number (0 to 15)
       */
     //% blockId="servoOffset"
-    //% block="offset of servo %servo=RVservos"
+    //% block="offset of servo %servo=servoNumber"
     //% weight=55
     //% subcategory=Servos
     export function servoOffset(servo: number): number
@@ -707,7 +707,7 @@ namespace marsRover
 
     /**
       * Get numeric value of colour
-      * @param color Standard RGB Led Colours eg: 0xff0000
+      * @param color Standard RGB Led Colours
       */
     //% blockId="colourSelect"
     //% block=%color
