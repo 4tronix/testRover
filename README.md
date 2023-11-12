@@ -5,7 +5,7 @@ This library provides a Microsoft Makecode extension for the [4tronix M.A.R.S. R
 Here are [the assembly instructions](https://4tronix.co.uk/rover)
 
 ## Driving the MARS Rover
-The simplest way to drive Rover is by using the `moveMilli(...)` and `move(...)` blocks.
+The simplest way to drive Rover is by using the `marsRover.move(...)` and `marsRover.moveMilli(...)` blocks.
 The speed is between 0 (stop) and 100 (full speed)
 Direction can be Forward or Reverse
 
@@ -35,8 +35,9 @@ Spin right at speed 50:
 marsRover.spin(RVdirection.Right, 50)
 ```
 
-If you want more fine grain control of individal motors, use `Rover.motor(..)` to drive motor either forward or reverse. The value
-indicates speed and is between 0 (stop) and 100 (reverse.
+If you want more fine grain control of individal motors, use `marsRover.motor(..)` to drive motor either forward or reverse. The value
+indicates speed and is between 0 (stop) and 100 (full speed).
+Direction can be Forward or Reverse
 
 Drive left motors forward at speed 60 (right motors are unchanged):
 
@@ -52,7 +53,7 @@ marsRover.motor(RVmotor.Both, RVvector.Reverse, 50)
 
 ## Controlling the Servos
 
-To turn an individual servo to a position from -90 to +90 degrees, use the setServo(..) command.
+To turn an individual servo to a position from -90 to +90 degrees, use the `setServo(..)` command.
 
 Turn the Mast servo (servo 0) to 30 degrees:
 
@@ -60,15 +61,16 @@ Turn the Mast servo (servo 0) to 30 degrees:
 marsRover.setServo(0, 30)
 ```
 
-You can also select the name of the servo using the getServoNumber(..) function. This command does the same as the one above:
+You can also select the name of the servo using the `servoNumber(..)` function.
 
 ```block
 marsRover.servoNumber(RVservos.Mast)
 ```
 
-To steer left, the front wheel servos need to point left and the rear servos to point right. You could do this  individually, but the Rover.steer(..) is designed for this:
+To steer left, the front wheel servos need to point left and the rear servos to point right. You could do this individually, but the `marsRover.steer(..)` block is designed for this:
 
 Turn the wheels to an angle of 30 degrees left. Motor speeds are not affected.
+
 ```block
 marsRover.steer(RVdirection.Left, 30)
 ```
@@ -79,7 +81,7 @@ Turn the wheels to an angle of 45 degrees right - a rather excessive turn!
 marsRover.steer(RVdirection.Right, 45)
 ```
 
-To point straight ahead, you can either steer with an angle of zero, or simply centre the wheel servos using `Rover.zeroServos(...)`. You can select all servos, just the wheel servos, or just the mast servos:
+To point straight ahead, you can either steer with an angle of zero, or simply centre the wheel servos using `marsRover.zeroServos(...)`. You can select all servos, just the wheel servos, or just the mast servos:
 
 ```blocks
 marsRover.zeroServos(RVservoGroup.Wheel)
@@ -99,7 +101,7 @@ marsRover.clearOffsets()
 To set an individual servo offset to 8. Value can be from -128 to +127 bit is normally between -20 and +20:
 
 ```block
-marsRover.setOffset(Rover.getServoNumber(eServos.FL), 8)
+marsRover.setOffset(Rover.getServoNumber(RVservos.FrontLeft), 8)
 ```
 
 ## Managing the EEROM
@@ -137,7 +139,7 @@ marsRover.saveOffsets()
 ## Read sonar value
 
 If you have mounted the optional sonar sensor for the Robobit you can
-also use the `Rover.sonar(..)` function to read the distance to obstacles.
+also use the `marsRover.readSonar(..)` function to read the distance to obstacles.
 
 ```block
 marsRover.readSonar(RVpingUnit.Centimeters)
@@ -145,7 +147,7 @@ marsRover.readSonar(RVpingUnit.Centimeters)
 
 ## FireLed Functions
 
-The MARS Rover has 4 FireLeds. One in each corner. There is a set of commands to control them
+The MARS Rover has 4 FireLeds, one in each corner. There is a set of commands to control them
 
 Set all FireLeds to Green (hard-coded RGB color):
 
@@ -168,7 +170,7 @@ marsRover.ledClear()
 Set LED at position 2 (0 to 3) to Green:
 
 ```block
-marsRover.setPixelColor(2, Rover.RVcolours(RVcolors.Green))
+marsRover.setPixelColor(2, marsRover.RVcolours(RVcolors.Green))
 ```
 
 Set LEDs to a rainbow selection:
