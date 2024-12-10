@@ -601,6 +601,7 @@ namespace marsRover
     //% block="read sonar as %unit"
     //% weight=100
     //% subcategory=Sensors
+    //% group="Ultrasonic sonar"
     export function readSonar(unit: RVpingUnit): number
     {
         // send pulse
@@ -758,7 +759,7 @@ namespace marsRover
     //% weight=60
     //% blockId=IRKeyCode
     //% block="IR Key%key"
-    //% subcategory="BitBot PRO"
+    //% subcategory=Sensors
     //% group=InfraRed
     export function irKeyCode(key: RVirNoAny): number
     {
